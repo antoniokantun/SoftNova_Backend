@@ -18,6 +18,7 @@ const controller = require('../controllers/mensaje.controller');
  *               - nombre_completo
  *               - correo
  *               - servicio_id
+ *               - recaptchaToken
  *             properties:
  *               nombre_completo:
  *                 type: string
@@ -29,6 +30,9 @@ const controller = require('../controllers/mensaje.controller');
  *                 type: integer
  *               mensaje:
  *                 type: string
+ *               recaptchaToken:
+ *                 type: string
+ *                 description: Token devuelto por Google reCAPTCHA v2
  *     responses:
  *       201:
  *         description: Mensaje guardado exitosamente
