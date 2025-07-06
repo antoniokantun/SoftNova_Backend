@@ -27,12 +27,12 @@ Los datos se almacenan en una base de datos MySQL con validación y estructura r
 
 ```
 SoftNova_Backend/
-├── src/
-│   ├── controllers/         # Lógica de negocio
-│   ├── routes/              # Rutas de la API
-│   ├── models/              # Conexión a la base de datos
-│   ├── docs/                # Configuración de Swagger
-│   └── app.js               # Punto de entrada principal
+
+├── controllers/             # Lógica de negocio
+├── routes/                  # Rutas de la API
+├── models/                  # Conexión a la base de datos
+├── docs/                    # Configuración de Swagger
+├── app.js                   # Punto de entrada principal
 ├── .env                     # Variables de entorno (no subir al repo)
 ├── .gitignore               # Archivos ignorados por Git
 ├── package.json             # Configuración de npm
