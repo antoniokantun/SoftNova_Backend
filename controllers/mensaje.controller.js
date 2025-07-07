@@ -74,16 +74,16 @@ exports.enviarMensaje = async (req, res) => {
         return res.status(500).json({ mensaje: 'Error al guardar el mensaje' });
       }
 
-          // Obtener nombre del servicio
-    db.query('SELECT nombre FROM servicios WHERE id = ?', [servicio_id], async (err2, result2) => {
-      const servicio_nombre = result2?.[0]?.nombre || `ID ${servicio_id}`;
+      // Obtener nombre del servicio
+      db.query('SELECT nombre FROM servicios WHERE id = ?', [servicio_id], async (err2, result2) => {
+        const servicio_nombre = result2?.[0]?.nombre || `ID ${servicio_id}`;
 
-      // Enviar correo con nombre del servicio
-      await notificarNuevoLead({ nombre_completo, correo, telefono, servicio_id, servicio_nombre, mensaje });
-    });
-
-
-      res.status(201).json({ mensaje: 'Mensaje guardado y correo enviado', id: result.insertId });
+        // Enviar correo con nombre del servicio
+        await notificarNuevoLead({ nombre_completo, correo, telefono, servicio_id, servicio_nombre, mensaje });
+        
+        // Responder solo una vez, después del correo
+        res.status(201).json({ mensaje: 'Mensaje guardado y correo enviado', id: result.insertId });
+      });
     });
 
   } catch (err) {
