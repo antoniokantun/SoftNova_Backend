@@ -4,13 +4,23 @@ const options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'API Formulario de Contacto',
+      title: 'API SoftNova CRM',
       version: '1.0.0',
     },
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+        }
+      }
+    },
+    security: [
+      { bearerAuth: [] }
+    ]
   },
   apis: ['./routes/*.js'],
 };
 
-const swaggerSpec = swaggerJSDoc(options);
-
-module.exports = swaggerSpec;
+module.exports = swaggerJSDoc(options);
