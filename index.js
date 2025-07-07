@@ -14,6 +14,20 @@ require('dotenv').config();
 app.use(cors());
 app.use(express.json());
 
+// Ruta de bienvenida
+app.get('/', (req, res) => {
+  res.json({
+    mensaje: '🚀 API SoftNova Backend está funcionando!',
+    version: '1.0.0',
+    endpoints: {
+      documentacion: '/api-docs',
+      mensajes: '/api/mensajes',
+      usuarios: '/api/usuarios',
+      auth: '/api/auth'
+    }
+  });
+});
+
 app.use('/api', mensajeRoutes);
 app.use('/api', usuarioRoutes);
 app.use('/api', authRoutes);
