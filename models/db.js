@@ -1,7 +1,9 @@
 // File: models/db.js
 
 const mysql = require('mysql2');
-require('dotenv').config();
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
 
 // Crear pool de conexiones en lugar de una sola conexión
 const pool = mysql.createPool({
@@ -11,10 +13,6 @@ const pool = mysql.createPool({
   database: process.env.DB_NAME,
   port: process.env.DB_PORT || 3306,
   connectionLimit: 10,
-  acquireTimeout: 60000,
-  timeout: 60000,
-  reconnect: true,
-  idleTimeout: 300000,
   multipleStatements: false
 });
 
